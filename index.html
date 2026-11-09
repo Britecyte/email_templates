@@ -10,7 +10,11 @@
     h1 { margin: 0 0 8px; font-size: 24px; }
     .sub { margin: 0; color: #4a5470; }
     .sub a { color: #1e448c; }
-    nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.filters button { color: #1e448c; background: #fff; border: 1px solid #d8e2ff; border-radius: 999px; padding: 6px 12px; font-size: 12px; font-weight: 700; cursor: pointer; }
+.filters button.is-active { background: #1e448c; color: #fff; border-color: #1e448c; }
+[hidden] { display: none !important; }
+        nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
     nav a { color: #1e448c; background: #eef3ff; border: 1px solid #d8e2ff; border-radius: 999px; padding: 6px 10px; font-size: 12px; text-decoration: none; }
     main { max-width: 1040px; margin: 0 auto; padding: 24px; }
     .obsolete { background: #fff; border: 1px solid #dde5f5; padding: 18px 20px; margin-bottom: 24px; }
@@ -31,7 +35,13 @@
   <header>
     <h1>Launchpad email preview</h1>
     <p class="sub">Unified static preview regenerated from live mailers. A blue border means the email is not sent yet. Role-based From/To · no Rails server required · <a href="/copy_review/">back to copy review</a></p>
-    <nav><a href="#email-0">Clinic welcome</a><a href="#email-1">New provider notification</a><a href="#email-16">Ordering paused — staff review</a><a href="#email-2">Ordering approved</a><a href="#email-3">Password reset</a><a href="#email-4">Specialist setup invitation</a><a href="#email-5">Billing setup link</a><a href="#email-6">Secure checkout link</a><a href="#email-7">New order notification</a><a href="#email-8">Order confirmation</a><a href="#email-9">Aesthetic consultant order declined</a><a href="#email-10">Fulfillment partner order packet</a><a href="#email-11">Order being fulfilled</a><a href="#email-12">Tracking / fulfillment update</a><a href="#email-21">Order delivered</a><a href="#email-13">Order delay / problem</a><a href="#email-14">Consultant order request received</a><a href="#email-15">Clinic notice — order submitted on their behalf</a><a href="#email-18">Complimentary vials need approval</a><a href="#email-22">Finish your profile</a><a href="#email-19">License expires soon</a><a href="#email-20">License expired</a></nav>
+    <div class="filters">
+  <button type="button" class="is-active" data-filter="all">All</button>
+  <button type="button" data-filter="staff">Staff</button>
+  <button type="button" data-filter="consultant">Consultants</button>
+  <button type="button" data-filter="provider">Providers</button>
+</div>
+        <nav><a href="#email-0" data-audiences="provider">Clinic welcome</a><a href="#email-1" data-audiences="staff">New provider notification</a><a href="#email-16" data-audiences="staff">Ordering paused — staff review</a><a href="#email-2" data-audiences="provider">Ordering approved</a><a href="#email-3" data-audiences="staff consultant provider">Password reset</a><a href="#email-4" data-audiences="provider">Specialist setup invitation</a><a href="#email-5" data-audiences="provider">Billing setup link</a><a href="#email-6" data-audiences="provider">Secure checkout link</a><a href="#email-7" data-audiences="staff">New order notification</a><a href="#email-8" data-audiences="provider">Order confirmation</a><a href="#email-9" data-audiences="consultant">Aesthetic consultant order declined</a><a href="#email-10" data-audiences="">Fulfillment partner order packet</a><a href="#email-11" data-audiences="provider">Order being fulfilled</a><a href="#email-12" data-audiences="provider">Tracking / fulfillment update</a><a href="#email-21" data-audiences="provider">Order delivered</a><a href="#email-13" data-audiences="provider">Order delay / problem</a><a href="#email-14" data-audiences="consultant">Consultant order request received</a><a href="#email-15" data-audiences="provider">Clinic notice — order submitted on their behalf</a><a href="#email-18" data-audiences="staff">Complimentary vials need approval</a><a href="#email-22" data-audiences="provider">Finish your profile</a><a href="#email-19" data-audiences="provider">License expires soon</a><a href="#email-20" data-audiences="provider">License expired</a></nav>
   </header>
   <main>
     <section class="obsolete">
@@ -42,7 +52,7 @@
         <li><strong>Legacy tissue-bank job</strong>: Collapsed/removed — active path is OrderMailer#tissue_bank_order.</li>
       </ul>
     </section>
-    <section class="email-card" id="email-0">
+    <section class="email-card" id="email-0" data-audiences="provider">
   <div class="meta">
     
     <p class="eyebrow">Provider creates an account</p>
@@ -133,7 +143,7 @@
 </div>
 </section>
 
-<section class="email-card" id="email-1">
+<section class="email-card" id="email-1" data-audiences="staff">
   <div class="meta">
     
     <p class="eyebrow">Provider creates account</p>
@@ -215,7 +225,7 @@
 </div>
 </section>
 
-<section class="email-card" id="email-16">
+<section class="email-card" id="email-16" data-audiences="staff">
   <div class="meta">
     
     <p class="eyebrow">A provider&#39;s approval is revoked (license expired, or a different license entered after a practice-type change)</p>
@@ -302,7 +312,7 @@
 </div>
 </section>
 
-<section class="email-card" id="email-2">
+<section class="email-card" id="email-2" data-audiences="provider">
   <div class="meta">
     
     <p class="eyebrow">Staff approves provider ordering</p>
@@ -369,7 +379,7 @@
 </div>
 </section>
 
-<section class="email-card" id="email-3">
+<section class="email-card" id="email-3" data-audiences="staff consultant provider">
   <div class="meta">
     
     <p class="eyebrow">Any Launchpad user requests password reset</p>
@@ -444,7 +454,7 @@
 </div>
 </section>
 
-<section class="email-card" id="email-4">
+<section class="email-card" id="email-4" data-audiences="provider">
   <div class="meta">
     
     <p class="eyebrow">Staff sends Specialist setup invite</p>
@@ -518,7 +528,7 @@
 </div>
 </section>
 
-<section class="email-card" id="email-5">
+<section class="email-card" id="email-5" data-audiences="provider">
   <div class="meta">
     
     <p class="eyebrow">Staff sends card setup link</p>
@@ -603,7 +613,7 @@
 </div>
 </section>
 
-<section class="email-card" id="email-6">
+<section class="email-card" id="email-6" data-audiences="provider">
   <div class="meta">
     
     <p class="eyebrow">Staff sends checkout link</p>
@@ -679,7 +689,7 @@
 </div>
 </section>
 
-<section class="email-card" id="email-7">
+<section class="email-card" id="email-7" data-audiences="staff">
   <div class="meta">
     
     <p class="eyebrow">Provider-paid order, or consultant submits an order needing approval</p>
@@ -769,7 +779,7 @@
 </div>
 </section>
 
-<section class="email-card" id="email-8">
+<section class="email-card" id="email-8" data-audiences="provider">
   <div class="meta">
     
     <p class="eyebrow">Stripe confirms paid order</p>
@@ -873,7 +883,7 @@
 </div>
 </section>
 
-<section class="email-card" id="email-9">
+<section class="email-card" id="email-9" data-audiences="consultant">
   <div class="meta">
     
     <p class="eyebrow">Staff declines a consultant order request</p>
@@ -947,7 +957,7 @@
 </div>
 </section>
 
-<section class="email-card" id="email-10">
+<section class="email-card" id="email-10" data-audiences="">
   <div class="meta">
     
     <p class="eyebrow">Staff sends Step 1</p>
@@ -1058,7 +1068,7 @@
 </div>
 </section>
 
-<section class="email-card" id="email-11">
+<section class="email-card" id="email-11" data-audiences="provider">
   <div class="meta">
     
     <p class="eyebrow">Staff completes Step 1</p>
@@ -1142,7 +1152,7 @@
 </div>
 </section>
 
-<section class="email-card" id="email-12">
+<section class="email-card" id="email-12" data-audiences="provider">
   <div class="meta">
     
     <p class="eyebrow">Staff completes Step 2</p>
@@ -1226,7 +1236,7 @@
 </div>
 </section>
 
-<section class="email-card not-live" id="email-21">
+<section class="email-card not-live" id="email-21" data-audiences="provider">
   <div class="meta">
     <p class="not-live-flag">Not sent yet</p>
     <p class="eyebrow">FedEx marks the shipment delivered</p>
@@ -1307,7 +1317,7 @@
 </div>
 </section>
 
-<section class="email-card" id="email-13">
+<section class="email-card" id="email-13" data-audiences="provider">
   <div class="meta">
     
     <p class="eyebrow">Staff marks an order delayed or reports a problem</p>
@@ -1387,7 +1397,7 @@
 </div>
 </section>
 
-<section class="email-card" id="email-14">
+<section class="email-card" id="email-14" data-audiences="consultant">
   <div class="meta">
     
     <p class="eyebrow">Executive Aesthetic Consultant submits an order request</p>
@@ -1479,7 +1489,7 @@
 </div>
 </section>
 
-<section class="email-card" id="email-15">
+<section class="email-card" id="email-15" data-audiences="provider">
   <div class="meta">
     
     <p class="eyebrow">Executive Aesthetic Consultant submits an order for a clinic</p>
@@ -1567,7 +1577,7 @@
 </div>
 </section>
 
-<section class="email-card" id="email-18">
+<section class="email-card" id="email-18" data-audiences="staff">
   <div class="meta">
     
     <p class="eyebrow">A consultant order or trial includes complimentary vials</p>
@@ -1649,7 +1659,7 @@
 </div>
 </section>
 
-<section class="email-card not-live" id="email-22">
+<section class="email-card not-live" id="email-22" data-audiences="provider">
   <div class="meta">
     <p class="not-live-flag">Not sent yet</p>
     <p class="eyebrow">A clinic still has setup steps left</p>
@@ -1726,7 +1736,7 @@
 </div>
 </section>
 
-<section class="email-card" id="email-19">
+<section class="email-card" id="email-19" data-audiences="provider">
   <div class="meta">
     
     <p class="eyebrow">Sent 30 days before the license expires</p>
@@ -1793,7 +1803,7 @@
 </div>
 </section>
 
-<section class="email-card" id="email-20">
+<section class="email-card" id="email-20" data-audiences="provider">
   <div class="meta">
     
     <p class="eyebrow">Sent on the day the license expires</p>
@@ -1861,5 +1871,19 @@
 </section>
 
   </main>
+  <script>
+    document.querySelectorAll("[data-filter]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.filter;
+        document.querySelectorAll("[data-filter]").forEach((other) => {
+          other.classList.toggle("is-active", other === button);
+        });
+        document.querySelectorAll("[data-audiences]").forEach((item) => {
+          const audiences = item.dataset.audiences.split(/\s+/);
+          item.hidden = filter !== "all" && !audiences.includes(filter);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
