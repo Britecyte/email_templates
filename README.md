@@ -1,10 +1,10 @@
-# Britecyte preview (`copytest`)
+# Britecyte email templates (`email_templates`)
 
 Team preview for copy that needs a look before approval. It intentionally has no
 `CNAME`, so publishing this repository cannot replace the live britecyte.com
 site.
 
-**Team preview:** https://britecyte.github.io/copytest/
+**Team preview:** https://britecyte.github.io/email_templates/
 
 The homepage is the Lipoderma email preview, synced from Launchpad’s live
 mailers (same content as
