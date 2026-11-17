@@ -1202,9 +1202,18 @@
 <p style="margin:0 0 8px;font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#fd893c;">Tracking</p>
 <p style="margin:0 0 14px;font-size:22px;font-weight:700;letter-spacing:-0.03em;line-height:1.25;color:#233051;">Your Lipoderma order is on its way.</p>
 <p style="margin:0 0 20px;color:#4a5470;">Shipped via FedEx Priority Overnight.</p>
-  <p style="margin:-8px 0 20px;font-size:22px;line-height:1.25;letter-spacing:-0.03em;">
-    <strong style="font-size:22px;font-weight:700;color:#c62828;">REMINDER: Upon receipt, inspect the package for damage, and then place it into your refrigerator for storage.</strong>
-  </p>
+  <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin:-8px 0 20px;">
+    <tr>
+      <td style="vertical-align:middle;padding-right:12px;width:78px;">
+        <img src="assets/do-not-freeze.png" alt="" width="78" height="78" style="display:block;border:0;width:78px;height:78px;">
+      </td>
+      <td style="vertical-align:middle;font-size:20px;line-height:26px;font-weight:700;color:#c62828;white-space:nowrap;">
+        REMINDER: Upon receipt, inspect the<br>
+        package for damage, then place it in<br>
+        the refrigerator. Do not freeze.
+      </td>
+    </tr>
+  </table>
 <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="border-top:1px solid #e1e7ff;border-bottom:1px solid #e1e7ff;">
   <tr>
     <td style="padding:10px 0;color:#4a5470;width:148px;">Order</td>
@@ -1887,6 +1896,8 @@
           const src = img.getAttribute("src") || "";
           if (src.includes("lipoderma-logo")) {
             img.setAttribute("src", outlookLogo);
+          } else if (src.includes("do-not-freeze") || src.includes("refrigerate-penguin")) {
+            img.setAttribute("src", "https://britecyte.github.io/email_templates/assets/do-not-freeze.png");
           } else if (src && !/^https?:/i.test(src)) {
             img.setAttribute("src", new URL(src, outlookLogo).href);
           }
